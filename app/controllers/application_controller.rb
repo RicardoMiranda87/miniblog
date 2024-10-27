@@ -1,12 +1,10 @@
 class ApplicationController < ActionController::Base
-  include Pundit
-  # Configurações adicionais
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  private
+  protected
 
-  def user_not_authorized
-    flash[:alert] = "Você não está autorizado a realizar essa ação."
-    redirect_to(request.referer || root_path)
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 end

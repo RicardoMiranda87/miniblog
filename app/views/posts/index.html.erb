@@ -1,5 +1,9 @@
-<% @posts.each do |post| %>
-  <% cache post do %>
-    <%= render post %>
+<h1>Postagens</h1>
+
+<% cache 'all_posts' do %>
+  <% @posts.each do |post| %>
+    <%= render partial: 'post', locals: { post: post } %>
   <% end %>
 <% end %>
+
+<%= link_to 'Nova Postagem', new_post_path %>

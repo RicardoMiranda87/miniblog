@@ -6,4 +6,8 @@ class PostPolicy < ApplicationPolicy
   def destroy?
     user == record.user || user.admin?
   end
+
+  def create?
+    user.present?
+  end
 end
