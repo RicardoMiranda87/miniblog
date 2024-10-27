@@ -88,8 +88,6 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  config.action_controller.perform_caching = true
-
   # Configura Redis como armazenamento de cache
 config.cache_store = :redis_cache_store, {
   url: ENV['REDISCLOUD_URL'],
