@@ -1,12 +1,8 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.body %></p>
-
-<% if @post.image.attached? %>
-  <%= image_tag @post.image %>
-<% end %>
-
-<small>Por <%= @post.user.name %></small>
-
-<%= link_to 'Voltar', posts_path %>
-<%= link_to 'Editar', edit_post_path(@post) %> |
-<%= link_to 'Excluir', @post, method: :delete, data: { confirm: 'Tem certeza?' } %>
+<div class="container mt-4">
+  <h1 class="mb-4"><%= @post.title %></h1>
+  <p class="lead"><%= @post.body %></p>
+  <p><strong>Autor:</strong> <%= @post.user.name %></p>
+  <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-primary" %> |
+  <%= link_to 'Voltar', posts_path, class: "btn btn-secondary" %> |
+  <%= link_to 'Deletar', @post, method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger" %>
+</div>

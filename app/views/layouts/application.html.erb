@@ -5,19 +5,35 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <%= stylesheet_link_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css", integrity: "sha384-MCSbBtW+DbALkg2T5Gsyg4gOdfBsM2L5U3nTYBQYJ4lgI0h5k9WOtI0jA4PU9y8I", crossorigin: "anonymous" %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", integrity: "sha384-pzjw8f+ua7Kw1TIq4JW9LfdAp3DTHMYT6bF4grW5kA7pd5y5tK5cdb2e65vZ1m1E", crossorigin: "anonymous" %>
+  <%= javascript_importmap_tags %>
 </head>
 
 <body>
-  <div class="container">
-    <% if user_signed_in? %>
-      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-link" %>
-    <% else %>
-      <%= link_to "Login", new_user_session_path %> |
-      <%= link_to "Registrar", new_user_registration_path %>
-    <% end %>
-
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/">MiniBlog</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link btn btn-danger" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link btn btn-primary" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Registrar", new_user_registration_path, class: "nav-link btn btn-success" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-4">
     <%= yield %>
   </div>
 </body>
