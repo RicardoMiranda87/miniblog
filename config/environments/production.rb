@@ -89,7 +89,7 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
   config.hosts.clear
-  config.hosts << "miniblog.herokuapp.com"
+  config.hosts << "https://miniblog-6b8e153cadaa.herokuapp.com/"
   config.hosts << /.*\.herokuapp\.com/
 
 
@@ -106,7 +106,7 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { host: 'miniblog.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://miniblog-6b8e153cadaa.herokuapp.com/' }
 
 
 end
