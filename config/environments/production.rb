@@ -90,7 +90,8 @@ Rails.application.configure do
   end
 
   config.hosts << "miniblog.herokuapp.com"
-  config.action_mailer.default_url_options = { host: 'miniblog.herokuapp.com' }
+  config.hosts << /.*\.herokuapp\.com/
+
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
