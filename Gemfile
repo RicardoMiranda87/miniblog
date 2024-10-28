@@ -40,6 +40,8 @@ gem 'active_storage_validations' # Validação de ActiveStorage
 gem 'rack-attack' # Proteção de API
 gem 'kaminari' # Paginação
 gem 'rspec-rails' # Testes unitários e de integração
+gem 'sassc-rails'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -84,3 +86,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "webpacker", "~> 5.4"

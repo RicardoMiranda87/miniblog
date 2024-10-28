@@ -4,37 +4,76 @@
   <title>MiniBlog</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
-  <%= stylesheet_link_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css", integrity: "sha384-MCSbBtW+DbALkg2T5Gsyg4gOdfBsM2L5U3nTYBQYJ4lgI0h5k9WOtI0jA4PU9y8I", crossorigin: "anonymous" %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", integrity: "sha384-pzjw8f+ua7Kw1TIq4JW9LfdAp3DTHMYT6bF4grW5kA7pd5y5tK5cdb2e65vZ1m1E", crossorigin: "anonymous" %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js", integrity: "sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYy1AdbiP1zv3K9mC5EvgBj7l6Pt5BheCV3P6lK", crossorigin: "anonymous" %>
   <%= javascript_importmap_tags %>
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="/">MiniBlog</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link btn btn-danger" %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link btn btn-danger ms-2" %>
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link btn btn-primary" %>
+              <%= link_to "Login", new_user_session_path, class: "nav-link btn btn-primary ms-2" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Registrar", new_user_registration_path, class: "nav-link btn btn-success" %>
+              <%= link_to "Register", new_user_registration_path, class: "nav-link btn btn-success ms-2" %>
             </li>
           <% end %>
         </ul>
       </div>
     </div>
   </nav>
+
   <div class="container mt-4">
+    <% if notice %>
+      <div class="alert alert-success" id="flash_notice">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-danger" id="flash_alert">
+        <%= alert %>
+      </div>
+    <% end %>
+    
     <%= yield %>
   </div>
+
+  <footer class="footer bg-dark text-white mt-5">
+    <div class="container text-center py-3">
+      <p>&copy; 2024 MiniBlog. Todos os direitos reservados.</p>
+      <p><a href="/about" class="text-white text-decoration-none">About Us</a> | <a href="/contact" class="text-white text-decoration-none">Contact</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(function() {
+        var notice = document.getElementById("flash_notice");
+        var alert = document.getElementById("flash_alert");
+        if (notice) {
+          notice.style.transition = "opacity 0.5s ease-out";
+          notice.style.opacity = "0";
+          setTimeout(function() { notice.remove(); }, 500);
+        }
+        if (alert) {
+          alert.style.transition = "opacity 0.5s ease-out";
+          alert.style.opacity = "0";
+          setTimeout(function() { alert.remove(); }, 500);
+        }
+      }, 5000);
+    });
+  </script>
 </body>
 </html>

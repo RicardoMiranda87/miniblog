@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[show edit update destroy]
 
   def index
     @posts = Post.all
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to @post, notice: 'Postagem criada com sucesso.'
+      redirect_to posts_path, notice: 'Post created successfully.'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: "Postagem atualizada com sucesso."
+      redirect_to posts_path, notice: "Post updated successfully."
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: "Postagem excluída com sucesso."
+    redirect_to posts_url, notice: "Post deleted successfully."
   end
 
   private

@@ -32,3 +32,10 @@
 echo ".env" >> .gitignore
 git add .gitignore
 git commit -m "Adicionar .env ao .gitignore"
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

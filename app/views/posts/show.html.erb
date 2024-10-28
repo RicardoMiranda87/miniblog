@@ -1,8 +1,8 @@
 <div class="container mt-4">
   <h1 class="mb-4"><%= @post.title %></h1>
   <p class="lead"><%= @post.body %></p>
-  <p><strong>Autor:</strong> <%= @post.user.name %></p>
-  <%= link_to 'Editar', edit_post_path(@post), class: "btn btn-primary" %> |
-  <%= link_to 'Voltar', posts_path, class: "btn btn-secondary" %> |
-  <%= link_to 'Deletar', @post, method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger" %>
+  <p><strong>Author:</strong> <%= @post.user.name %></p>
+  <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary" %> |
+  <%= link_to 'Back', posts_path, class: "btn btn-secondary" %> |
+  <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 </div>
