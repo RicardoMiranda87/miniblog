@@ -4,6 +4,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "@fortawesome/fontawesome-free/css/all.css"
 import "@hotwired/turbo-rails"
+import "stylesheets/application"
 import "controllers"
 import * as bootstrap from "bootstrap"
 

@@ -13,17 +13,10 @@
     <div class="container">
       <a class="navbar-brand" href="/">MiniBlog</a>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="ms-auto">
           <% if user_signed_in? %>
-            <li class="nav-item">
+            <li class="sign-out-btn">
               <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link btn btn-primary ms-2" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Register", new_user_registration_path, class: "nav-link btn btn-success ms-2" %>
             </li>
           <% end %>
         </ul>

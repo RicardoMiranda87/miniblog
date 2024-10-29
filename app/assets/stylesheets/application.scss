@@ -65,3 +65,57 @@ footer a {
   text-decoration: underline;
 }
 
+.sign-out-btn {
+  margin-left: 75rem;
+  margin-top: 1rem;
+}
+
+.post-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+/* Efeito ao passar o mouse */
+.post-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Título da postagem */
+.post-card .card-title {
+  color: #007bff;
+  font-weight: 600;
+}
+
+/* Texto principal */
+.post-card .card-text {
+  color: #555;
+}
+
+/* Botões personalizados */
+.post-card .btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.post-card .btn-outline-primary:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.post-card .btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.post-card .btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.margin-left-1 {
+  margin-left: -1rem
+}
