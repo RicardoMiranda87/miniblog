@@ -119,3 +119,8 @@ footer a {
 .margin-left-1 {
   margin-left: -1rem
 }
+
+.inline-button {
+  display: grid;
+  grid-template-columns: 1fr 11fr;
+}
